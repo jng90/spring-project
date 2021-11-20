@@ -11,6 +11,20 @@ import java.io.IOException;
 @Controller
 public class DemoController {
 
+
+    @RequestMapping(value = "/power", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+    public void power(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        final String power = request.getParameter("power");
+        double number = Integer.parseInt(request.getParameter("number"));
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        if ( (power != null)) {
+            response.getWriter().println("<Html><body><h3>null</h3></body></html>");
+        } else {
+            response.getWriter().println("<Html><body><h3>Power of " + number + " is " +Math.pow(number, number) + "</h3></body></html>");
+        }
+    }
+
     @RequestMapping(value = "/message", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public void message(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String name = request.getParameter("name");
@@ -28,6 +42,16 @@ public class DemoController {
     @ResponseBody
     public String messageImp(@RequestParam(defaultValue = "Braaak imienia") String name, @RequestParam(defaultValue = "20") int age) {
         return "Your name " + name + " and age " + age;
+    }
+
+    @GetMapping("/power")
+    @ResponseBody
+    public String power (Double number){
+        if(number == null){
+            return "musisz podac parametr number!";
+        }
+        double result = Math.pow(number, 2);
+        return "wynik: " + result;
 
     }
 
