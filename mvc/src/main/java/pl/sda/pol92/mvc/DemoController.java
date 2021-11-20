@@ -2,8 +2,7 @@ package pl.sda.pol92.mvc;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,7 @@ public class DemoController {
     @RequestMapping(value = "/message", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public void message(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         if (name != null) {
@@ -22,6 +22,13 @@ public class DemoController {
         } else {
             response.getWriter().println("<Html><body><h3>Brak imienia</h3></body></html>");
         }
+    }
+
+    @GetMapping(value = "/newmessage", produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public String messageImp(@RequestParam(defaultValue = "Braaak imienia") String name, @RequestParam(defaultValue = "20") int age) {
+        return "Your name " + name + " and age " + age;
 
     }
+
 }
