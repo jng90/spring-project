@@ -12,7 +12,12 @@
         <li>
             <a href="/power?number=4">Power</a>
         </li>
+        <li>
             <a href="/mvcpower?number=5">MVC Power</a>
+        </li>
+        <li>
+            <a href="/power-form">Power formularz</a>
+        </li>
     </ul>
 </body>
 </head>

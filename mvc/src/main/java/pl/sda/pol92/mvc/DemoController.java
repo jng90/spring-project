@@ -68,4 +68,9 @@ public class DemoController {
         return "power-result";
     }
 
+    @GetMapping("/power-form")
+    public String powerForm(){
+        return "power-form";
+    }
+
 }

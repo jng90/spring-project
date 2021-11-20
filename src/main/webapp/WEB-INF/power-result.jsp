@@ -6,5 +6,8 @@
 <body>
 <h2>Wynik obliczen</h2>
 <p>Potega liczby ${number} wynosi: ${power}</p>
+<li>
+    <a href="/power-form">Powrot do obliczen</a>
+</li>
 </body>
 </html>
